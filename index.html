@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ResumeScore — 0 to Shipped Resume Parser</title>
+  <meta name="description" content="Upload a resume PDF and get a score, the skills we found, and the ones that are missing." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ---------- Nav ---------- -->
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="brand" href="#top">
+        <span class="brand__mark">0&nbsp;&rarr;&nbsp;S</span>
+        <span class="brand__name">ResumeScore</span>
+      </a>
+      <nav class="nav__links">
+        <a href="#how">How it works</a>
+        <a href="#upload">Check my resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ---------- Hero ---------- -->
+    <section class="hero wrap">
+      <p class="eyebrow">0 to Shipped &middot; project 01</p>
+      <h1>Know your resume&rsquo;s score<br /><span class="grad">before a recruiter does.</span></h1>
+      <p class="hero__sub">
+        Drop in a PDF. We read it, score it against the skills hiring teams
+        search for, and show you exactly what is missing. Nothing leaves your
+        browser.
+      </p>
+      <a class="btn btn--primary" href="#upload">Upload a resume</a>
+      <p class="hero__note">No sign-up. No upload server. Works offline once the page is loaded.</p>
+    </section>
+
+    <!-- ---------- Upload ---------- -->
+    <section class="wrap" id="upload">
+      <div class="card upload" id="dropzone">
+        <input type="file" id="file-input" accept=".pdf,.txt,application/pdf,text/plain" hidden />
+        <div class="upload__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 16V4" /><path d="m7 9 5-5 5 5" /><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+          </svg>
+        </div>
+        <h2>Drop your resume here</h2>
+        <p class="muted">PDF or plain text, up to about 5&nbsp;MB.</p>
+        <button class="btn btn--ghost" type="button" id="browse-btn">Choose a file</button>
+        <p class="upload__file" id="file-name" hidden></p>
+      </div>
+
+      <!-- status line while reading -->
+      <p class="status" id="status" hidden>
+        <span class="spinner" aria-hidden="true"></span>
+        <span id="status-text">Reading your resume&hellip;</span>
+      </p>
+    </section>
+
+    <!-- ---------- Results ---------- -->
+    <section class="wrap results" id="results" hidden>
+      <div class="card card--wide">
+        <div class="results__head">
+          <div class="score">
+            <svg class="ring" viewBox="0 0 140 140" role="img" aria-labelledby="score-label">
+              <title id="score-label">Resume score</title>
+              <circle class="ring__track" cx="70" cy="70" r="60" />
+              <circle class="ring__value" id="ring-value" cx="70" cy="70" r="60" />
+            </svg>
+            <div class="score__text">
+              <span class="score__number" id="score-number">0</span>
+              <span class="score__out">/ 100</span>
+            </div>
+          </div>
+          <div class="verdict">
+            <h2 id="verdict-title">&nbsp;</h2>
+            <p id="verdict-copy" class="muted">&nbsp;</p>
+            <p class="note" id="mock-note" hidden></p>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="col">
+            <h3 class="col__title">
+              Skills we found <span class="pill pill--good" id="found-count">0</span>
+            </h3>
+            <ul class="chips" id="found-list"></ul>
+          </div>
+          <div class="col">
+            <h3 class="col__title">
+              Skills missing <span class="pill pill--warn" id="missing-count">0</span>
+            </h3>
+            <ul class="chips" id="missing-list"></ul>
+          </div>
+        </div>
+
+        <div class="checks">
+          <h3 class="col__title">Structure checks</h3>
+          <ul class="checks__list" id="checks-list"></ul>
+        </div>
+
+        <div class="fixes">
+          <h3 class="col__title">Fix these next</h3>
+          <ol class="fixes__list" id="fixes-list"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- How it works ---------- -->
+    <section class="wrap how" id="how">
+      <h2 class="section__title">How it works</h2>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num">1</span>
+          <h3>You pick a file</h3>
+          <p class="muted">We read it with pdf.js, right here in the tab. Your resume is never sent anywhere.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">2</span>
+          <h3>We look for signal</h3>
+          <p class="muted">A catalogue of skills is keyword-matched against the text, plus checks for contact details, sections and numbers.</p>
+        </li>
+        <li class="step">
+          <span class="step__num">3</span>
+          <h3>You get the gaps</h3>
+          <p class="muted">A score out of 100, the skills that landed, the ones that did not, and what to fix first.</p>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p class="muted">ResumeScore &mdash; a 0 to Shipped mock. Scoring is local and heuristic, not a real ATS.</p>
+      <p class="muted">Built with HTML, CSS and vanilla JS.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
