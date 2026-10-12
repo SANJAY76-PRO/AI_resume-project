@@ -101,6 +101,7 @@ a { color: inherit; }
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 .btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
 .btn--primary {
   color: #0b0d12;
   background: linear-gradient(100deg, var(--brand), var(--brand-2));
@@ -112,7 +113,7 @@ a { color: inherit; }
   background: rgba(255, 255, 255, 0.04);
   border-color: var(--line);
 }
-.btn--ghost:hover { background: rgba(255, 255, 255, 0.08); }
+.btn--ghost:hover:not(:disabled) { background: rgba(255, 255, 255, 0.08); }
 
 /* ---------- Cards ---------- */
 .card {
@@ -153,6 +154,7 @@ a { color: inherit; }
   color: var(--muted);
   font-size: 0.95rem;
 }
+.status.is-error { color: var(--bad); }
 .spinner {
   width: 16px; height: 16px;
   border: 2px solid var(--line);
@@ -240,7 +242,7 @@ a { color: inherit; }
 /* ---------- How it works ---------- */
 .how { padding: 4.5rem 0 3rem; }
 .section__title { text-align: center; font-size: 1.7rem; margin-bottom: 2rem; }
-.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; counter-reset: none; }
+.steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 .step {
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid var(--line);
